@@ -135,7 +135,7 @@ export default function Projects() {
   return (
     <div className="experience" ref={projectsRef}>
       <div className="experience-content bg-transparent">
-        <h1 className="projects-title experience-title font-poppins" style={hiddenStyle}>
+        <h1 className="projects-title experience-title font-poppins text-center" style={hiddenStyle}>
           <span className="greeting-highlight font-poppins">Featured</span> Projects
         </h1>
         
