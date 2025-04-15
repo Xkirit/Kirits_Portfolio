@@ -167,6 +167,8 @@ html, body{
 .currently {
   font-style: italic;
   color: #969696;
+  padding-top: 1rem;
+  font-size: 1.2rem;
 }
 
 /* Original about p styles retained for compatibility */
@@ -232,7 +234,7 @@ img{
 
 .sub-header a{
   text-decoration: none;
-  text-transform: uppercase;
+  text-transform: upperse;
   font-family: 'Marcellus',serif;
   font-weight: 500;
   color: #969696;

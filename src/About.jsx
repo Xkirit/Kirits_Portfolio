@@ -107,16 +107,27 @@ export default function About() {
             modern web technologies, I transform ideas into engaging applications.
           </p>
           
-          <div className="skills" style={hiddenStyle}>
-            <span className="skill-tag">React</span>
+          <div className="skills mb-10" style={hiddenStyle}>
+            
             <span className="skill-tag">JavaScript</span>
             <span className="skill-tag">TypeScript</span>
+            <span className="skill-tag">Java</span>
+            <span className="skill-tag">Python</span>
+            <span className="skill-tag">Spring Boot</span>
+            <span className="skill-tag">React</span>
+            <span className="skill-tag">Next.js</span>
             <span className="skill-tag">GSAP</span>
-            <span className="skill-tag">Tailwind</span>
-            <span className="skill-tag">UI/UX</span>
+            <span className="skill-tag">Node.js</span>
+            <span className="skill-tag">Express.js</span>
+            <span className="skill-tag">MongoDB</span>
+            
+            <span className="skill-tag">PostgreSQL</span>
+            
+          
+           
           </div>
           
-          <p className="currently">
+          <p className="currently ">
             Currently focused on building interactive web experiences
             with smooth animations and optimized performance.
           </p>
