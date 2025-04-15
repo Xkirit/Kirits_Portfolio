@@ -1,28 +1,43 @@
-@import 'tailwindcss';
 @import url('https://fonts.googleapis.com/css2?family=Domine:wght@400..700&display=swap');
 /* @import url(https://db.onlinewebfonts.com/c/1c87f20c55baa7eccc98b8603b5eecea?family=GrifinitoL); */
 @import url('https://fonts.googleapis.com/css2?family=Marcellus&display=swap');
 
 /* Default state for animated elements to prevent flashing */
 .greeting, .bio, .skills, .skill-tag, .wrapper-img img, 
-.experience-title, .exp-card, .timeline-dot, .bullet-point {
+.experience-title, .exp-card, .timeline-dot, .bullet-point,
+.contact-title, #contact-form, #contact-form input, #contact-form textarea, #contact-form button {
   opacity: 0;
 }
 
+/* Reset and base styles */
 * {
    margin: 0;
    padding: 0;
-   width: screen;
-   
-   /* font-size: 20px; */
-   /* box-sizing: border-box; */
-   /* font-family: "Rocinate Titling", Arial, Helvetica, sans-serif; */
+   box-sizing: border-box;
+}
+
+/* Responsive font sizing */
+html {
+  font-size: 100%;
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: 95%;
+  }
+}
+
+@media (max-width: 480px) {
+  html {
+    font-size: 90%;
+  }
 }
 
 html, body{
   width: 100%;
   height: 100%;
   background: #000;
+  overflow-x: hidden;
 }
 .container {
   margin: 0 2rem;
@@ -58,10 +73,9 @@ html, body{
   display: flex;
   align-items: center;
   position: relative;
-  /* margin: 5rem 0 0 5rem; */
   width: 90%;
-  margin-top: 8rem;
-  margin-left: 15rem;
+  max-width: 1200px;
+  margin-bottom: 10rem;
   height: auto;
 }
 
@@ -81,6 +95,7 @@ html, body{
 
 .greeting-highlight {
   color: #dcff7c;
+  font-family: 'Poppins', sans-serif;
 }
 
 .name {
@@ -163,13 +178,14 @@ html, body{
 }
 
 .wrapper-img{
-  overflow: hidden;
-  position: absolute;
-  top: 15%;
-  right: 10%;
-  transform: translate(-50%, 0);
-  width: 17%;
-  height: 90vh;
+  overflow: visible;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  width:  100%;
+  height: 65vh;
+  margin-bottom: 2rem;
+  
 }
 
 img{
@@ -198,9 +214,21 @@ img{
   justify-content: space-between;
   align-items: center;
   overflow: visible;
-  padding: 0 2rem 1rem;
+  padding: 3rem 2rem 1rem;
   z-index: 100;
 }
+@media (max-width: 768px) {
+  .sub-header {
+    padding: 4rem 2rem 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .sub-header {
+    padding: 3rem 1.5rem 2.5rem;
+  }
+}
+
 
 .sub-header a{
   text-decoration: none;
@@ -419,7 +447,9 @@ a.aboutme{
 .experience-content {
   width: 100%;
   max-width: 1200px;
+  height: 100%;
   z-index: 1;
+  background-color: transparent;
   padding: 0 2rem;
 }
 
@@ -455,6 +485,7 @@ a.aboutme{
   padding-bottom: 2rem;
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
+  padding-top: 0;
 }
 
 .exp-cards-container::-webkit-scrollbar {
@@ -468,7 +499,10 @@ a.aboutme{
   border-radius: 10px;
   padding: 2rem;
   position: relative;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.5s ease, border-color 0.5s ease;
+  text-decoration: none;
+  cursor: pointer;
+  overflow: hidden;
 }
 
 .exp-card:hover {
@@ -500,7 +534,7 @@ a.aboutme{
 }
 
 .job-title {
-  font-family: 'Marcellus', serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 1.5rem;
   color: #dcff7c;
   font-weight: 600;
@@ -508,11 +542,12 @@ a.aboutme{
 }
 
 .job-period {
-  font-family: 'Marcellus', serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 0.9rem;
   color: #969696;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.05em;
   margin-bottom: 1rem;
+  font-weight: 300;
 }
 
 .company-name {
@@ -541,10 +576,11 @@ a.aboutme{
   position: relative;
   padding-left: 1.5rem;
   margin-bottom: 0.8rem;
-  font-family: 'Marcellus', serif;
+  font-family: 'Poppins', sans-serif;
   color: #bdbdbd;
   font-size: 0.9rem;
   line-height: 1.5;
+  font-weight: 300;
 }
 
 .bullet-point::before {
@@ -556,16 +592,143 @@ a.aboutme{
   font-size: 1.2rem;
 }
 
-/* Responsive styles */
-@media (max-width: 768px) {
+.project-name {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Poppins', sans-serif;
+  font-size: 3rem;
+  font-weight: 700;
+  color: white;
+  text-align: center;
+  opacity: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  transition: opacity 0.3s ease;
+  z-index: 2;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  transform: scale(1);
+  pointer-events: none;
+  border-radius: 10px;
+}
+
+/* Project card color variants */
+.purple-glow-card:hover {
+  border-color: rgba(149, 76, 233, 0.5);
+  text-decoration: rgba(149, 76, 233, 0.5);
+  box-shadow: 0 5px 15px rgba(149, 76, 233, 0.2);
+}
+
+.purple-glow-card:hover::before {
+  background: linear-gradient(90deg, transparent, rgba(149, 76, 233, 0.8), transparent);
+}
+
+.purple-glow-card:hover .project-name {
+  color: rgba(149, 76, 233, 1);
+} 
+.purple-glow-card .project-name {
+  color: rgba(149, 76, 233, 1);
+} 
+.purple-glow-card:hover .job-title {
+  color: rgba(149, 76, 233, 1);
+}
+
+.indigo-glow-card:hover {
+  border-color: rgba(66, 153, 225, 0.5);
+  box-shadow: 0 5px 15px rgba(66, 153, 225, 0.2);
+}
+
+.indigo-glow-card:hover::before {
+  background: linear-gradient(90deg, transparent, rgba(66, 153, 225, 0.8), transparent);
+}
+
+.indigo-glow-card .project-name {
+  color: rgba(66, 153, 225, 1);
+}
+.indigo-glow-card:hover .job-title {
+  color: rgba(66, 153, 225, 1);
+}
+
+
+.green-glow-card:hover {
+  border-color: rgba(72, 187, 120, 0.5);
+  box-shadow: 0 5px 15px rgba(72, 187, 120, 0.2);
+}
+
+.green-glow-card:hover::before {
+  background: linear-gradient(90deg, transparent, rgba(72, 187, 120, 0.8), transparent);
+}
+
+.green-glow-card:hover .job-title {
+  color: rgba(72, 187, 120, 1);
+}
+.green-glow-card .project-name {
+  color: rgba(72, 187, 120, 1);
+}
+
+
+/* Medium screens (tablets, small laptops) */
+@media (min-width: 769px) and (max-width: 1200px) {
+  .wrapper-img {
+    position: relative;
+    top: 0;
+    left: auto;
+    transform: none;
+    width: 60%;
+    height: 40vh;
+    margin: 0 auto 2rem;
+  }
+
   .about {
+    margin: 4rem 2rem;
+    width: 90%;
+    margin-left: 2rem;
+  }
+  
+  .about-content {
+    width: 60%;
+  }
+  
+  .greeting {
+    font-size: 2.2rem;
+  }
+  
+  .name {
+    font-size: 3.2rem;
+  }
+  
+  .bio {
+    font-size: 1.15rem;
+  }
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .wrapper-img {
+    position: relative;
+    top: 0;
+    right: auto;
+    transform: none;
+    width: 60%;
+    height: 40vh;
+    margin: 0 auto 2rem;
+  }
+  
+  .about {
+    margin: 2rem auto;
+    width: 90%;
     flex-direction: column;
-    margin: 2rem 1rem;
+    align-items: center;
   }
   
   .about-content {
     width: 100%;
     max-width: 100%;
+    padding: 0 1.5rem;
   }
   
   .name {
@@ -581,7 +744,7 @@ a.aboutme{
   }
   
   .bio {
-    font-size: 1rem;
+    font-size: 1.1rem;
   }
   
   .skills {
@@ -596,11 +759,30 @@ a.aboutme{
   .sub-header {
     flex-wrap: wrap;
     justify-content: center;
+    margin-top: 1rem;
     gap: 1rem;
+    padding: 1rem;
+    padding-top: 2.5rem;
+    
+  }
+  
+  .sub-header a {
+    font-size: 0.9rem;
+    margin: 0 0.5rem;
+  }
+  
+  .nav {
+    padding: 1rem;
+  }
+  
+  .nav a {
+    font-size: 20px;
+    margin: 0.5em;
   }
   
   .experience {
     padding: 1rem;
+    margin-bottom: 10rem;
     min-height: auto;
   }
   
@@ -641,5 +823,66 @@ a.aboutme{
   
   .bullet-point {
     font-size: 0.9rem;
+  }
+  
+  .project-name {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .wrapper-img {
+    width: 80%;
+    height: 30vh;
+  }
+  
+  .greeting {
+    font-size: 1.75rem;
+  }
+  
+  .name {
+    font-size: 2.5rem;
+  }
+  
+  .bio {
+    font-size: 1rem;
+  }
+  
+  .skills {
+    gap: 0.4rem;
+  }
+  
+  .skill-tag {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.7rem;
+  }
+  
+  .sub-header a {
+    font-size: 0.8rem;
+    margin: 0 0.3rem;
+  }
+}
+
+@import 'tailwindcss';
+
+/* Additional styles for the image container */
+.image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+@media (min-width: 1201px) {
+  .about {
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+  }
+  
+  .wrapper-img {
+    width: 30%;
+    height: 65vh;
+    margin: 0 2rem;
   }
 }

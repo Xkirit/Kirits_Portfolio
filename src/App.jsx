@@ -29,7 +29,10 @@ function AppContent() {
         pointerEvents: contentVisible ? 'auto' : 'none' // Disable interactions when fading
       }}>
         <Navbar />
-        <Subheader />
+        {/* <div className="absolute bottom-0 w-full">
+          <Subheader />
+        </div> */}
+        <Subheader/>
         
         <Routes>
           <Route path="/" element={<Home />} />

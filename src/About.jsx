@@ -94,8 +94,8 @@ export default function About() {
   }, [loadingComplete])
 
   return (
-    <div className="about" ref={aboutRef}>
-      <div className="about-content">
+    <div className="about w-full md:w-1/6 lg:w-1/5 md:ml-0 lg:ml-4 justify-center mb-28" ref={aboutRef}>
+      <div className="about-content w-full md:max-w-none py-4">
         <h1 className="greeting" style={hiddenStyle}>
           <span className="greeting-highlight">Hello,</span> <span>I'm Kirit</span>
         </h1>

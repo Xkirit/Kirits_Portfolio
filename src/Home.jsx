@@ -42,7 +42,6 @@ export default function Home() {
     
     tl.to(".wrapper-img img", {
       opacity: 1,
-      
       visibility: 'visible',
       duration: 1.4,
       ease: "power2.in",
@@ -54,11 +53,13 @@ export default function Home() {
   }, [loadingComplete, imagesReady]);
   
   return (
-    <div className="relative flex items-center justify-center">
-      <About />
-      <div className="image-container">
-        <Image />
-      </div>
+    <div className="flex flex-col lg:flex-row h-max items-center justify-center w-full px-4 min-h-[80vh]">
+      {/* <div className="flex flex-col md:flex-row items-center justify-center w-full max-w-7xl"> */}
+        <About />
+       
+          <Image />
+        
+     
     </div>
   )
 }

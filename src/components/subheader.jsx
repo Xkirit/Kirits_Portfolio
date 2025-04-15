@@ -50,7 +50,7 @@ export default function Subheader() {
   }, []);
 
   return (
-    <div className="sub-header absolute bottom-2 w-screen h-5 flex justify-between overflow-hidden p-3 mb-2" ref={subheaderRef}>
+    <div className="sub-header absolute bottom-2 w-full flex backdrop-blur-xs flex-wrap justify-center md:justify-between overflow-wrap mb-10 gap-2 md:gap-0" ref={subheaderRef}>
       <a href="#" className="rolling-text contact-link font-domine" onClick={(e) => handleNavClick(e, '/contact')}>
         →WORK WITH ME
       </a>
@@ -60,10 +60,10 @@ export default function Subheader() {
       <a href="/projects" className="rolling-text font-marcellus" onClick={(e) => handleNavClick(e, '/projects')}>
         Projects
       </a>
-      <a href="https://github.com" className="rolling-text font-marcellus" target="_blank" rel="noopener noreferrer">
+      <a href="https://github.com/xKirit" className="rolling-text font-marcellus" target="_blank" rel="noopener noreferrer">
         GitHub
       </a>
-      <a href="https://linkedin.com" className="rolling-text font-marcellus" target="_blank" rel="noopener noreferrer">
+      <a href="https://www.linkedin.com/in/tadi-kiriti-raju-15545b299/" className="rolling-text font-marcellus" target="_blank" rel="noopener noreferrer">
         LinkedIn
       </a>
     </div>

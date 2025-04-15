@@ -110,74 +110,52 @@ export default function Experience() {
   }, [loadingComplete]);
 
   return (
-    <div className="experience" ref={experienceRef}>
-      <div className="experience-content">
-        <h1 className="experience-title" style={hiddenStyle}>
+    <div className="experience  px-4 py-8 md:mb-14 md:py-16" ref={experienceRef}>
+      <div className="experience-content mx-auto max-w-6xl">
+        <h1 className="experience-title font-poppins mb-12 text-center" style={hiddenStyle}>
           <span className="title-highlight">Professional</span> Experience
         </h1>
         
-        <div className="exp-cards-container">
-          <div className="exp-card" style={hiddenStyle}>
+        <div className="exp-cards-container justify-center">
+          {/* Valsco Technology */}
+          <a href="https://www.valscotech.com/" target="_blank" rel="noopener noreferrer">
+          <div className="exp-card purple-glow-card h-full" style={hiddenStyle}>
             <div className="exp-card-content">
               <div className="exp-header">
-                <h2 className="job-title">Senior Developer</h2>
-                <span className="job-period">2021 - Present</span>
+                <h2 className="job-title font-poppins">Frontend Intern</h2>
+                <span className="job-period font-poppins">February 2025 - Current</span>
               </div>
-              <h3 className="company-name">SoftTech Innovations</h3>
-              
-              <p className="job-description">
-                Led development of key product features, mentored junior developers, and implemented
-                modern frontend architecture using React and related technologies.
+              <h3 className="company-name font-poppins">Valsco Technology</h3>
+              <p className="job-description font-poppins">
+                Vellore, India
               </p>
-              
               <ul className="achievements">
-                <li className="bullet-point">Improved application performance by 40% through code optimization</li>
-                <li className="bullet-point">Implemented CI/CD pipeline reducing deployment time by 60%</li>
-                <li className="bullet-point">Architected and built responsive UI components used across multiple products</li>
+                <li className="bullet-point font-poppins">Spearheaded development of the Jurident web application</li>
+                <li className="bullet-point font-poppins">Developed the landing page for the Smart Tech Hackathon using NextJs</li>
+                <li className="bullet-point font-poppins">Built backend using API Routes and Google API to store user data in sheets</li>
               </ul>
             </div>
           </div>
-          
-          <div className="exp-card" style={hiddenStyle}>
+          </a>
+          {/* OMIFCO */}
+          <a href="https://www.omifco.com/" target="_blank" rel="noopener noreferrer">
+          <div className="exp-card indigo-glow-card h-[52vh]" style={hiddenStyle}>
             <div className="exp-card-content">
               <div className="exp-header">
-                <h2 className="job-title">Frontend Developer</h2>
-                <span className="job-period">2018 - 2021</span>
+                <h2 className="job-title font-poppins">Software Intern</h2>
+                <span className="job-period font-poppins">Oct 2023 - Nov 2023</span>
               </div>
-              <h3 className="company-name">Digital Solutions Ltd.</h3>
-              
-              <p className="job-description">
-                Developed and maintained client-facing web applications with focus on performance
-                and accessibility.
-              </p>
-              
+              <h3 className="company-name font-poppins">Oman India Fertilizer Company</h3>
+              {/* <p className="job-description font-poppins">Sur, Oman</p> */}
               <ul className="achievements">
-                <li className="bullet-point">Built interactive dashboards using React and D3.js</li>
-                <li className="bullet-point">Collaborated with design team to implement pixel-perfect UIs</li>
-                <li className="bullet-point">Reduced bundle size by 35% through code splitting and lazy loading</li>
+                <li className="bullet-point font-poppins">Developed Material Flow App with Oracle APEX, reducing manual work by 20%</li>
+                <li className="bullet-point font-poppins">Managed Oracle SQL databases with 1,000+ records for efficient reporting</li>
+                <li className="bullet-point font-poppins">Automated HR processes using Oracle Fusion, cutting task time by 25%</li>
+                <li className="bullet-point font-poppins">Improved system performance by 10% through infrastructure optimization</li>
               </ul>
             </div>
           </div>
-          
-          <div className="exp-card" style={hiddenStyle}>
-            <div className="exp-card-content">
-              <div className="exp-header">
-                <h2 className="job-title">Junior Web Developer</h2>
-                <span className="job-period">2016 - 2018</span>
-              </div>
-              <h3 className="company-name">Creative Web Agency</h3>
-              
-              <p className="job-description">
-                Worked on various client projects developing responsive websites and web applications.
-              </p>
-              
-              <ul className="achievements">
-                <li className="bullet-point">Developed responsive websites for small to medium businesses</li>
-                <li className="bullet-point">Implemented SEO best practices across client projects</li>
-                <li className="bullet-point">Created reusable component libraries to improve development efficiency</li>
-              </ul>
-            </div>
-          </div>
+          </a>
         </div>
       </div>
     </div>

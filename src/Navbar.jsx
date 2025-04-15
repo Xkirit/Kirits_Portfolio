@@ -11,17 +11,19 @@ export default function Navbar() {
 
   return (
     <>
-      <div className="nav">
-        <a href="/" className="p-3 items-center h-20" onClick={(e) => handleNavClick(e, '/')}>
+      <div className="nav flex justify-center py-4">
+        <a 
+          href="/" 
+          className="p-3 flex items-center" 
+          onClick={(e) => handleNavClick(e, '/')}
+        >
           <img 
             src={logo} 
             alt="Kirit Raju" 
-            className="h-1 w-auto object-contain" 
+            className="h-auto w-auto max-h-16 object-contain" 
             style={{ opacity: 1 }}
           />
         </a>
-        {/* <a href="/about" onClick={(e) => handleNavClick(e, '/about')}>About</a>
-        <a href="/projects" onClick={(e) => handleNavClick(e, '/projects')}>Projects</a> */}
       </div>
     </>
   )
