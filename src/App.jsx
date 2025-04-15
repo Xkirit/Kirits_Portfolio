@@ -9,6 +9,7 @@ import Projects from './Projects'
 import Contact from './Contact'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { LoadingProvider, useLoading } from './context/LoadingContext'
+import { Analytics } from '@vercel/analytics/react'
 
 function AppContent() {
   const { isLoading, isTransitioning, preFadeOut } = useLoading();
@@ -51,6 +52,7 @@ function App() {
     <Router>
       <LoadingProvider>
         <AppContent />
+        <Analytics />
       </LoadingProvider>
     </Router>
   )
