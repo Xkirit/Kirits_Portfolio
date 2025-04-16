@@ -183,11 +183,11 @@ html, body{
 .wrapper-img{
   overflow: visible;
   position: relative;
-  align-items: center;
+  align-items: start;
   justify-content: center;
   width:  100%;
-  height: 65vh;
-  margin-bottom: 2rem;
+  height: 70vh;
+  margin-bottom: 1rem;
   
 }
 
