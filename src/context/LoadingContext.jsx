@@ -8,6 +8,7 @@ const LoadingContext = createContext({
   loadingComplete: false,
   isTransitioning: false,
   preFadeOut: false,
+  pathname: 'HOME',
   setIsLoading: () => {},
   setLoadingComplete: () => {},
   startPageTransition: () => {}
@@ -20,12 +21,20 @@ export function LoadingProvider({ children }) {
   const [preFadeOut, setPreFadeOut] = useState(false);
   const [nextPath, setNextPath] = useState('');
   const navigate = useNavigate();
+  const [pathname, setPathname] = useState('HOME');
 
   const startPageTransition = (path) => {
     // First start the pre-fade out phase
     setPreFadeOut(true);
     setLoadingComplete(false);
     setNextPath(path);
+    
+    // Format and set the pathname correctly
+    // If path is '/', set it to 'HOME'
+    const formattedPath = path === '/' ? 'HOME' : path;
+    setPathname(formattedPath);
+    
+    console.log('Starting transition to:', formattedPath);
     
     // Fade out content before starting the transition animation
     const fadeOutTl = gsap.timeline({
@@ -80,7 +89,8 @@ export function LoadingProvider({ children }) {
       isTransitioning,
       preFadeOut,
       startPageTransition,
-      completeTransition
+      completeTransition,
+      pathname
     }}>
       {children}
     </LoadingContext.Provider>

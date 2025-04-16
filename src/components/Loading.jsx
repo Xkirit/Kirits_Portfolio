@@ -5,7 +5,17 @@ import { useLoading } from '../context/LoadingContext';
 export default function Loader() {
   const loaderRef = useRef(null);
   const textRef = useRef(null);
-  const { setIsLoading, setLoadingComplete, isTransitioning, completeTransition } = useLoading();
+  const { setIsLoading, setLoadingComplete, isTransitioning, completeTransition, pathname } = useLoading();
+
+  // Format the pathname for display
+  const getDisplayName = () => {
+    if (!pathname || pathname === 'HOME' || pathname === '/') {
+      return 'WELCOME';
+    } else {
+      // Remove the leading slash and uppercase the result
+      return pathname.replace('/', '').toUpperCase();
+    }
+  };
 
   useEffect(() => {
     if (!loaderRef.current) return;
@@ -29,10 +39,17 @@ export default function Loader() {
     });
     
     if (isTransitioning) {
+      console.log('Current path:', pathname);
+
       // For transitions: start with invisible blocks 
       gsap.set(blocks, { 
         width: '0%',
         opacity: 0 // Start completely invisible to prevent flash
+      });
+      
+      // Make sure the text is visible and centered
+      gsap.set(textRef.current, {
+        opacity: 1
       });
       
       // Fade in blocks from right to left
@@ -50,8 +67,13 @@ export default function Loader() {
         ease: 'power2.in',
         stagger: 0.02
       }, "-=0.2");
-       
       
+      // Fade out text with the same timing as the welcome text
+      tl.to(textRef.current, {
+        opacity: 0,
+        duration: 0.3,
+        delay: 0.2
+      });
       
       // Then fade and shrink blocks away - from right to left
       tl.to(blocksArray, {
@@ -59,7 +81,7 @@ export default function Loader() {
         duration: 0.4,
         ease: 'power2.out',
         stagger: 0.02
-      });
+      }, "-=0.3");
       
       // Fade out opacity at the end - from right to left
       tl.to(blocksArray, {
@@ -108,12 +130,12 @@ export default function Loader() {
       // Clean up animation if component unmounts
       tl.kill();
     };
-  }, [setIsLoading, setLoadingComplete, isTransitioning, completeTransition]);
+  }, [setIsLoading, setLoadingComplete, isTransitioning, completeTransition, pathname]);
 
   return (
     <div className="loader-container" ref={loaderRef}>
       <div className="overlay">
-        {!isTransitioning && <p className="loader" ref={textRef}>WELCOME</p>}
+        <p className="loader font-poppins text-2xl" ref={textRef}>{getDisplayName()}</p>
         <div className="block block1"></div>
         <div className="block block2"></div>
         <div className="block block3"></div>
