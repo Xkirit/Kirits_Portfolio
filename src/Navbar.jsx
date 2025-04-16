@@ -20,7 +20,7 @@ export default function Navbar() {
           <img 
             src={logo} 
             alt="Kirit Raju" 
-            className="max-h-13 md:max-h-16 object-contain" 
+            className="w-auto max-h-8 sm:h-10 md:h-12 max-w-[80px] sm:max-w-[100px] md:max-w-[120px] object-contain" 
             style={{ opacity: 1 }}
           />
         </a>
