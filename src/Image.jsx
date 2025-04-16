@@ -7,10 +7,10 @@ export default function Image(){
           <div>
           {/* <img className="image" src={image} alt="profile portrait" loading="eager" /> */}
           
-          <div className='w-full flex justify-center items-start'>
-          <div className="w-1/2 flex lg:mb-10 right-10 md:w-1/2  md:left-10 lg:w-[275px] items-center justify-center">
+          <div className='w-full flex mr-10 justify-center items-start'>
+          <div className="w-1/2 flex lg:mb-10 lg:mr-10 right-10 md:w-1/2  md:left-10 lg:w-[275px] items-center justify-center">
             <img 
-              className="image mb-10 flex object-cover w-full justify-center items-start rounded-lg" 
+              className="image mb-10 mr-10 flex object-cover w-full justify-center items-start rounded-lg" 
               src={image} 
               alt="profile portrait" 
               loading="eager" 

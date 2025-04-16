@@ -53,7 +53,7 @@ export default function Home() {
   }, [loadingComplete, imagesReady]);
   
   return (
-    <div className="flex flex-col lg:flex-row h-max items-center justify-center w-full px-4 min-h-[80vh]">
+    <div className="flex flex-col lg:flex-row   items-center justify-center w-full px-4 min-h-[80vh]">
       {/* <div className="flex flex-col md:flex-row items-center justify-center w-full max-w-7xl"> */}
         <About />
        

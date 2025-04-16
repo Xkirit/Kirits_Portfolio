@@ -838,7 +838,7 @@ a.aboutme{
 @media (max-width: 480px) {
   .wrapper-img {
     width: 80%;
-    height: 30vh;
+    height: 40vh;
   }
   
   .greeting {
@@ -888,6 +888,7 @@ a.aboutme{
   .wrapper-img {
     width: 30%;
     height: 65vh;
-    margin: 0 2rem;
+    margin: 0 5rem;
+    margin-right: 15rem;
   }
 }
