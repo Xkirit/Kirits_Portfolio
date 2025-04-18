@@ -51,7 +51,7 @@ export default function Subheader() {
 
   return (
     <div className="sub-header absolute bottom-2 w-full flex backdrop-blur-xs flex-wrap justify-center md:justify-between overflow-wrap mb-10 gap-2 md:gap-0" ref={subheaderRef}>
-      <a href="/" className="rolling-text contact-link font-domine" onClick={(e) => handleNavClick(e, '/')}>
+      <a href="/" className="rolling-text contact-link font-domine" onClick={(e) => handleNavClick(e, '/contact')}>
         →WORK WITH ME
       </a>
       <a href="/experience" className="rolling-text font-marcellus" onClick={(e) => handleNavClick(e, '/experience')}>

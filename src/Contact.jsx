@@ -6,9 +6,9 @@ import { useLoading } from './context/LoadingContext';
 
 export default function Contact() {
   const contactRef = useRef(null);
-  const { loadingComplete } = useLoading();
+  const { loadingComplete, startPageTransition } = useLoading();
   const [animationsInitialized, setAnimationsInitialized] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [showThankYouModal, setShowThankYouModal] = useState(false);
   
   const [formData, setFormData] = useState({
     name: '',
@@ -27,8 +27,8 @@ export default function Contact() {
     console.log('Form submitted:', formData);
     // In a real application, you would handle form submission to your backend here
     
-    // Show success message
-    setIsSubmitted(true);
+    // Show thank you modal
+    setShowThankYouModal(true);
     
     // Reset form after submission
     setFormData({
@@ -36,11 +36,14 @@ export default function Contact() {
       email: '',
       message: ''
     });
+  };
+
+  const handleCloseModal = () => {
+    // Close the modal
+    setShowThankYouModal(false);
     
-    // Hide success message after 5 seconds
-    setTimeout(() => {
-      setIsSubmitted(false);
-    }, 5000);
+    // Redirect to home page
+    startPageTransition('/');
   };
 
   const handleChange = (e) => {
@@ -147,22 +150,53 @@ export default function Contact() {
   }, [loadingComplete]);
 
   return (
-    <div className="min-h-screen bg-black" ref={contactRef}>
-      <div className="flex justify-center items-center w-full h-full pt-20 pb-16 mx-auto">
-        {/* Main content container */}
-        <div className="w-full max-w-xl px-6">
-          <h1 className="contact-title text-5xl font-bold mb-10 text-center font-domine" style={hiddenStyle}>
-            <span className="text-[#dcff7c]">Get in</span> Touch
-          </h1>
+    <div className="h-[70vh] flex items-center justify-center mt-24 pb-20 bg-black" ref={contactRef}>
+      {/* Thank You Modal */}
+      {showThankYouModal && (
+        <div className="fixed inset-0 flex items-center justify-center z-[9999]">
+          {/* Backdrop with stronger blur effect */}
+          <div 
+            className="fixed inset-0 bg-black bg-opacity-60 backdrop-blur-lg transition-all duration-300 ease-in-out"
+            onClick={handleCloseModal}
+          ></div>
           
-          {isSubmitted && (
-            <div className="bg-[#142200] border border-[#dcff7c] text-[#dcff7c] p-4 rounded-xl mb-8 text-center">
-              Thank you for your message! I'll get back to you soon.
+          {/* Modal content with enhanced styling */}
+          <div className="bg-[#111] border border-[#dcff7c] rounded-xl p-8 max-w-md w-11/12 mx-4 z-10 transform transition-all duration-500 scale-100 opacity-100 shadow-[0_0_30px_rgba(220,255,124,0.2)] relative">
+            {/* Accent line at top */}
+            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#dcff7c] to-transparent opacity-80 rounded-t-xl"></div>
+            
+            <div className="text-center">
+              {/* Checkmark icon */}
+              <div className="mx-auto w-16 h-16 mb-6 rounded-full bg-[#142200] flex items-center justify-center border border-[#dcff7c]">
+                <svg className="w-8 h-8 text-[#dcff7c]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+              </div>
+              
+              <h2 className="text-3xl font-bold mb-4 text-[#dcff7c] font-marcellus tracking-wide">Thank You!</h2>
+              <p className="text-gray-200 mb-8 font-marcellus leading-relaxed">
+                I've received your message and will get back to you as soon as possible.
+              </p>
+              
+              <button
+                onClick={handleCloseModal}
+                className="w-full bg-[#dcff7c] text-black font-semibold py-4 px-6 rounded-xl hover:bg-[#839753] transition-all duration-300 hover:cursor-pointer shadow-[0_0_15px_rgba(220,255,124,0.3)] hover:shadow-[0_0_20px_rgba(220,255,124,0.4)]"
+              >
+                Back to Home
+              </button>
             </div>
-          )}
-          
-          <form id="contact-form" onSubmit={handleSubmit} className="flex flex-col space-y-8" style={hiddenStyle}>
-            <div className="space-y-6">
+          </div>
+        </div>
+      )}
+
+      <div className="w-full max-w-4xl touch flex flex-col gap-5 items-center justify-center px-6 py-12">
+        <h1 className="contact-title touch text-5xl font-bold mb-10 text-center font-marcellus" style={hiddenStyle}>
+          <span className="text-[#dcff7c] title-highlight">Get in Touch</span> 
+        </h1>
+        
+        <div className="w-full max-w-xl">
+          <form id="contact-form" onSubmit={handleSubmit} className="flex flex-col gap-5" style={hiddenStyle}>
+            <div className="flex flex-col gap-5">
               <div className="group">
                 <input
                   type="text"
@@ -170,8 +204,8 @@ export default function Contact() {
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  className="w-full p-4 bg-[#111] rounded-xl text-gray-200 border border-[#222] focus:border-[#dcff7c] focus:shadow-[0_0_8px_rgba(220,255,124,0.3)] transition-all duration-300 ease-in-out outline-none placeholder-gray-600 group-hover:border-[#444]"
-                  placeholder="Your name"
+                  className="w-full p-5 px-6 h-10 bg-[#111] rounded-xl text-gray-200 border border-[#222] focus:border-[#dcff7c] focus:shadow-[0_0_8px_rgba(220,255,124,0.3)] transition-all duration-300 ease-in-out outline-none placeholder-gray-600 group-hover:border-[#444]"
+                  placeholder=" Your name"
                   required
                 />
               </div>
@@ -183,8 +217,8 @@ export default function Contact() {
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full p-4 bg-[#111] rounded-xl text-gray-200 border border-[#222] focus:border-[#dcff7c] focus:shadow-[0_0_8px_rgba(220,255,124,0.3)] transition-all duration-300 ease-in-out outline-none placeholder-gray-600 group-hover:border-[#444]"
-                  placeholder="your@email.com"
+                  className="w-full h-10 p-5 px-6 bg-[#111] rounded-xl text-gray-200 border border-[#222] focus:border-[#dcff7c] focus:shadow-[0_0_8px_rgba(220,255,124,0.3)] transition-all duration-300 ease-in-out outline-none placeholder-gray-600 group-hover:border-[#444]"
+                  placeholder=" your@email.com"
                   required
                 />
               </div>
@@ -196,8 +230,8 @@ export default function Contact() {
                   value={formData.message}
                   onChange={handleChange}
                   rows="6"
-                  className="w-full p-4 bg-[#111] rounded-xl text-gray-200 border border-[#222] focus:border-[#dcff7c] focus:shadow-[0_0_8px_rgba(220,255,124,0.3)] transition-all duration-300 ease-in-out outline-none resize-none placeholder-gray-600 group-hover:border-[#444]"
-                  placeholder="What would you like to say?"
+                  className="w-full p-5 px-6 bg-[#111] rounded-xl text-gray-200 border border-[#222] focus:border-[#dcff7c] focus:shadow-[0_0_8px_rgba(220,255,124,0.3)] transition-all duration-300 ease-in-out outline-none resize-none placeholder-gray-600 group-hover:border-[#444]"
+                  placeholder=" What would you like to say?"
                   required
                 />
               </div>
@@ -205,7 +239,7 @@ export default function Contact() {
             
             <button
               type="submit"
-              className="w-full py-4 bg-[#dcff7c] text-black font-semibold hover:bg-[#c2e66d] hover:shadow-[0_0_12px_rgba(220,255,124,0.4)] active:bg-[#b3d75e] transition-all duration-300 rounded-xl mt-2"
+              className="w-full h-12 bg-[#dcff7c] text-black font-semibold hover:bg-[#839753] hover:shadow-[0_0_12px_rgba(220,255,124,0.4)] active:bg-[#b3d75e] transition-all duration-300 rounded-xl hover:cursor-pointer"
               style={hiddenStyle}
             >
               Send Message

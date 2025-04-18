@@ -233,6 +233,10 @@ img{
 }
 
 
+.touch .span{
+  font-family: 'Marcellus',serif;
+}
+
 .sub-header a{
   text-decoration: none;
   text-transform: upperse;
@@ -458,7 +462,7 @@ a.aboutme{
   padding: 0 2rem;
 }
 
-.experience-title {
+.experience-title, .contact-title {
   font-family: 'Marcellus', serif;
   font-size: 2.5rem;
   color: #969696;
