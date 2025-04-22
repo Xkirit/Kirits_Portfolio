@@ -386,8 +386,8 @@ a.aboutme{
   transform: scale(1, 2.5);
   transform-origin: center bottom;
   margin-bottom: 0.5em;
-  line-height: 1;
-  padding-bottom: 0.1em;
+  line-height: 1.21;
+  
   
 }
 

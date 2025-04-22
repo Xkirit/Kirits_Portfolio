@@ -52,7 +52,7 @@ export default function Subheader() {
   return (
     <div className="sub-header absolute bottom-2 w-full flex backdrop-blur-xs flex-wrap justify-center md:justify-between overflow-wrap mb-10 gap-2 md:gap-0" ref={subheaderRef}>
       <a href="/" className="rolling-text contact-link font-domine" onClick={(e) => handleNavClick(e, '/contact')}>
-        →WORK WITH ME
+        WORK WITH ME
       </a>
       <a href="/experience" className="rolling-text font-marcellus" onClick={(e) => handleNavClick(e, '/experience')}>
         Experience
@@ -60,12 +60,16 @@ export default function Subheader() {
       <a href="/projects" className="rolling-text font-marcellus" onClick={(e) => handleNavClick(e, '/projects')}>
         Projects
       </a>
+      <a href="https://orange-meridith-23.tiiny.site/" className="rolling-text font-marcellus" target="_blank" rel="noopener noreferrer">
+        Resume
+      </a>
       <a href="https://github.com/xKirit" className="rolling-text font-marcellus" target="_blank" rel="noopener noreferrer">
         GitHub
       </a>
       <a href="https://www.linkedin.com/in/tadi-kiriti-raju-15545b299/" className="rolling-text font-marcellus" target="_blank" rel="noopener noreferrer">
         LinkedIn
       </a>
+      
     </div>
   );
 }
